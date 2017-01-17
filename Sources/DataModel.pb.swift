@@ -18,6 +18,9 @@ struct BookInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtob
     1: .same(proto: "id", swift: "id"),
     2: .same(proto: "title", swift: "title"),
     3: .same(proto: "author", swift: "author"),
+    4: .same(proto: "publishers", swift: "publishers"),
+    5: .same(proto: "totalPage", swift: "totalPage"),
+    6: .same(proto: "desc", swift: "desc"),
   ]
 
 
@@ -27,6 +30,12 @@ struct BookInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtob
 
   var author: String = ""
 
+  var publishers: String = ""
+
+  var totalPage: Int64 = 0
+
+  var desc: String = ""
+
   init() {}
 
   public mutating func _protoc_generated_decodeField(setter: inout SwiftProtobuf.FieldDecoder, protoFieldNumber: Int) throws {
@@ -34,6 +43,9 @@ struct BookInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtob
     case 1: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufInt64.self, value: &id)
     case 2: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &title)
     case 3: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &author)
+    case 4: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &publishers)
+    case 5: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufInt64.self, value: &totalPage)
+    case 6: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &desc)
     default: break
     }
   }
@@ -48,12 +60,24 @@ struct BookInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtob
     if author != "" {
       try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: author, protoFieldNumber: 3)
     }
+    if publishers != "" {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: publishers, protoFieldNumber: 4)
+    }
+    if totalPage != 0 {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufInt64.self, value: totalPage, protoFieldNumber: 5)
+    }
+    if desc != "" {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: desc, protoFieldNumber: 6)
+    }
   }
 
   public func _protoc_generated_isEqualTo(other: BookInfo) -> Bool {
     if id != other.id {return false}
     if title != other.title {return false}
     if author != other.author {return false}
+    if publishers != other.publishers {return false}
+    if totalPage != other.totalPage {return false}
+    if desc != other.desc {return false}
     return true
   }
 }
@@ -67,6 +91,9 @@ struct MyLibrary: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProto
     2: .same(proto: "name", swift: "name"),
     3: .same(proto: "books", swift: "books"),
     4: .same(proto: "keys", swift: "keys"),
+    5: .same(proto: "address", swift: "address"),
+    6: .same(proto: "manager", swift: "manager"),
+    7: .same(proto: "opentime", swift: "opentime"),
   ]
 
 
@@ -78,6 +105,12 @@ struct MyLibrary: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProto
 
   var keys: Dictionary<String,String> = [:]
 
+  var address: String = ""
+
+  var manager: String = ""
+
+  var opentime: String = ""
+
   init() {}
 
   public mutating func _protoc_generated_decodeField(setter: inout SwiftProtobuf.FieldDecoder, protoFieldNumber: Int) throws {
@@ -86,6 +119,9 @@ struct MyLibrary: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProto
     case 2: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &name)
     case 3: try setter.decodeRepeatedMessageField(fieldType: BookInfo.self, value: &books)
     case 4: try setter.decodeMapField(fieldType: SwiftProtobuf.ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &keys)
+    case 5: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &address)
+    case 6: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &manager)
+    case 7: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &opentime)
     default: break
     }
   }
@@ -103,6 +139,15 @@ struct MyLibrary: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProto
     if !keys.isEmpty {
       try visitor.visitMapField(fieldType: SwiftProtobuf.ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: keys, protoFieldNumber: 4)
     }
+    if address != "" {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: address, protoFieldNumber: 5)
+    }
+    if manager != "" {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: manager, protoFieldNumber: 6)
+    }
+    if opentime != "" {
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: opentime, protoFieldNumber: 7)
+    }
   }
 
   public func _protoc_generated_isEqualTo(other: MyLibrary) -> Bool {
@@ -110,6 +155,9 @@ struct MyLibrary: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProto
     if name != other.name {return false}
     if books != other.books {return false}
     if keys != other.keys {return false}
+    if address != other.address {return false}
+    if manager != other.manager {return false}
+    if opentime != other.opentime {return false}
     return true
   }
 }
